@@ -27,7 +27,8 @@ PY
 # 2. ressources, code, paquet
 $BT/aapt2 compile --dir res -o build/res.zip
 $BT/aapt2 link -o build/base.apk -I $AJ --manifest AndroidManifest.xml -A assets build/res.zip --min-sdk-version 22 --target-sdk-version 33 --version-code ${VCODE:-1} --version-name ${VNAME:-1.0}
-javac -nowarn -source 8 -target 8 -bootclasspath $AJ -d build/classes src/fr/soen/tour/*.java 2>&1 | grep -v "^warning\|^Note\|^1 warning" || true
+javac -nowarn -encoding UTF-8 -source 8 -target 8 -bootclasspath $AJ -d build/classes src/fr/soen/tour/*.java 2>&1 | grep -v "^warning\|^Note\|^1 warning\|JAVA_TOOL" || true
+[ -f build/classes/fr/soen/tour/MainActivity.class ] || { echo 'ERREUR : la compilation Java a échoué'; exit 1; }
 $BT/d8 --lib $AJ --min-api 22 --output build/dex build/classes/fr/soen/tour/*.class
 (cd build/dex && zip -q -j ../base.apk classes.dex)
 $BT/zipalign -f -p 4 build/base.apk build/aligned.apk
