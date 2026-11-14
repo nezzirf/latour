@@ -53,15 +53,22 @@ public class MainActivity extends Activity {
             case KeyEvent.KEYCODE_DPAD_CENTER: case KeyEvent.KEYCODE_ENTER: case KeyEvent.KEYCODE_NUMPAD_ENTER:
             case KeyEvent.KEYCODE_BUTTON_A: case KeyEvent.KEYCODE_SPACE: return "a";
             case KeyEvent.KEYCODE_BUTTON_B: case KeyEvent.KEYCODE_BACK: case KeyEvent.KEYCODE_ESCAPE: return "b";
-            case KeyEvent.KEYCODE_BUTTON_X: case KeyEvent.KEYCODE_BUTTON_Y: case KeyEvent.KEYCODE_BUTTON_L1: case KeyEvent.KEYCODE_BUTTON_R1: return "x";
-            case KeyEvent.KEYCODE_BUTTON_START: case KeyEvent.KEYCODE_BUTTON_SELECT: case KeyEvent.KEYCODE_MENU:
+            case KeyEvent.KEYCODE_BUTTON_X: case KeyEvent.KEYCODE_BUTTON_Y: case KeyEvent.KEYCODE_BUTTON_L1: case KeyEvent.KEYCODE_BUTTON_R1:
+            case KeyEvent.KEYCODE_BUTTON_C: case KeyEvent.KEYCODE_BUTTON_Z: case KeyEvent.KEYCODE_BUTTON_L2: case KeyEvent.KEYCODE_BUTTON_R2:
+            case KeyEvent.KEYCODE_BUTTON_THUMBL: case KeyEvent.KEYCODE_BUTTON_THUMBR: return "x";
+            case KeyEvent.KEYCODE_BUTTON_START: case KeyEvent.KEYCODE_BUTTON_SELECT: case KeyEvent.KEYCODE_BUTTON_MODE: case KeyEvent.KEYCODE_MENU:
             case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE: case KeyEvent.KEYCODE_MEDIA_PLAY: case KeyEvent.KEYCODE_MEDIA_PAUSE: return "pause";
+            // manettes génériques : boutons numérotés
+            case KeyEvent.KEYCODE_BUTTON_1: case KeyEvent.KEYCODE_BUTTON_3: return "a";
+            case KeyEvent.KEYCODE_BUTTON_2: case KeyEvent.KEYCODE_BUTTON_4: return "b";
+            case KeyEvent.KEYCODE_BUTTON_9: case KeyEvent.KEYCODE_BUTTON_10: case KeyEvent.KEYCODE_BUTTON_12: return "pause";
             default: return null;
         }
     }
 
     @Override public boolean dispatchKeyEvent(KeyEvent e) {
         String k = keyName(e.getKeyCode());
+        if (k == null && (KeyEvent.isGamepadButton(e.getKeyCode()) || (e.getSource() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD)) k = "x";   // autre bouton de manette : sauter
         if (k == null) return super.dispatchKeyEvent(e);
         if (e.getAction() == KeyEvent.ACTION_DOWN) send(k, true);
         else if (e.getAction() == KeyEvent.ACTION_UP) send(k, false);

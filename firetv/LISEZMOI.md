@@ -11,6 +11,6 @@ transmet au jeu toutes les touches de la manette (Xbox, PlayStation…) et de la
 4. Installer, puis lancer **Soen : la Tour** depuis « Vos applis ».
 
 ## Fabriquer l'application
-`build.sh` assemble `index.html` (CSS Tailwind compilé et three.js intégrés), le code `src/`, et signe le
+`VCODE=3 VNAME=1.2 ./build.sh` (augmenter VCODE à chaque version) assemble `index.html` (CSS Tailwind compilé et three.js intégrés), le code `src/`, et signe le
 paquet avec `soen.keystore` (garder la même clé pour que les mises à jour s'installent par-dessus sans perdre les os et achats).
 Il faut le SDK Android (plateforme 34, build-tools 34.0.0), Java, Node (tailwindcss) et three@0.147.0.
