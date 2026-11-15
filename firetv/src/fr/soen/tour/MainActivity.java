@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
         web.setWebChromeClient(new WebChromeClient());
         web.setWebViewClient(new WebViewClient());
         web.setBackgroundColor(0xFF0A0628);
-        web.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        // pas de calque supplémentaire : la vue web est déjà accélérée, un calque en plus double le travail de la carte graphique
         web.setFocusable(false);   // la vue web ne doit pas « manger » les touches
         setContentView(web);
         web.loadUrl("file:///android_asset/index.html");
