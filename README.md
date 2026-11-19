@@ -1,4 +1,4 @@
-# Soen : L'Épreuve de la Tour
+# Soën : L'Épreuve de la Tour
 
 Jeu de plateforme quotidien en un seul fichier (`index.html`) : ouvre-le dans un navigateur pour jouer.
 

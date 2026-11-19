@@ -8,7 +8,7 @@ transmet au jeu toutes les touches de la manette (Xbox, PlayStation…) et de la
 2. Ma Fire TV → Options pour les développeurs → Installer des applis inconnues → autoriser **Downloader**.
 3. Installer l'application **Downloader** (gratuite, dans la boutique Amazon) et y taper l'adresse :
    `https://github.com/nezzirf/latour/raw/main/soen-firetv.apk`
-4. Installer, puis lancer **Soen : la Tour** depuis « Vos applis ».
+4. Installer, puis lancer **Soën : la Tour** depuis « Vos applis ».
 
 ## Fabriquer l'application
 `VCODE=3 VNAME=1.2 ./build.sh` (augmenter VCODE à chaque version) assemble `index.html` (CSS Tailwind compilé et three.js intégrés), le code `src/`, et signe le

@@ -14,7 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-/* Soen : l'Épreuve de la Tour — le jeu (page web) dans une application Fire TV / Android TV.
+/* Soën : l'Épreuve de la Tour — le jeu (page web) dans une application Fire TV / Android TV.
    L'application note l'état des touches (manette et télécommande) ; le jeu le lit à chaque image. */
 public class MainActivity extends Activity {
     private WebView web;
